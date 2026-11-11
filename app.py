@@ -73,7 +73,7 @@ async def bio(ctx, access_token: str = None, *, bio: str = None):
     except:
         pass
 
-    await ctx.send("⏳ Updating bio just wait a moment...", delete_after=3)
+    await ctx.send("⏳ Actualizando biografía, espera un momento", delete_after=3)
 
     url = f"{API_URL}?access_token={access_token}&bio={bio}&key={KEY}"
 
