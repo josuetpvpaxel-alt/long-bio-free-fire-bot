@@ -55,15 +55,15 @@ async def on_ready():
 async def bio(ctx, access_token: str = None, *, bio: str = None):
     if not access_token or not bio:
         return await ctx.reply(
-            "**Usage:**\n`!bio <access_token> <new bio>`\n\n"
-            "**Example:**\n`!bio ABC123 Hello world!`"
+            "**Usa:**\n`!bio <access_token> <new bio>`\n\n"
+            "**Ejemplo:**\n`!bio ORVEX /python main.py!`"
         )
 
     now = datetime.now().timestamp()
     last = cooldowns.get(ctx.author.id, 0)
     if now - last < 30:
         return await ctx.send(
-            f"⏳ Please wait **{int(30 - (now - last))}s** before reusing this command.",
+            f"⏳ Por favor espera!! **{int(30 - (now - last))}s** before reusing this command.",
             delete_after=6
         )
     cooldowns[ctx.author.id] = now
@@ -89,14 +89,14 @@ async def bio(ctx, access_token: str = None, *, bio: str = None):
         region = format_region(data.get("region", "UNK"))
 
         embed = discord.Embed(
-            title="✅ Bio Updated !",
+            title="✅ Biografía Actualizada!",
             color=0x77d5a3,
             description=(
-                f"> **Nickname:** {data.get('nickname', 'Unknown')}\n"
-                f"> **Platform:** {data.get('platform', 'Unknown')}\n"
+                f"> **Nombre:** {data.get('nickname', 'Unknown')}\n"
+                f"> **Plataforma:** {data.get('platform', 'Unknown')}\n"
                 f"> **Region:** {region}\n"
                 f"> **UID:** {data.get('uid', 'Unknown')}\n"
-                f"> **New Bio:** ||{data.get('bio', '')}||"
+                f"> **Biografía:** ||{data.get('bio', '')}||"
             )
         )
         embed.set_thumbnail(url=ctx.author.display_avatar.url)
@@ -110,7 +110,7 @@ async def bio(ctx, access_token: str = None, *, bio: str = None):
 async def start_web_server():
     app = web.Application()
     async def handle(request):
-        return web.Response(text="Bot is running ✅")
+        return web.Response(text="Bot Está funcionando / Está en ejecución ✅")
     app.router.add_get("/", handle)
     runner = web.AppRunner(app)
     await runner.setup()
